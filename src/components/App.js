@@ -1,10 +1,10 @@
 import '../css/styles.css';
-import PostsGrid from './PostsGrid';
 import { useState, useEffect, Fragment } from 'react';
+import PostsGrid from './PostsGrid';
 import Navbar from './Navbar';
+import Loader from './Loader';
 import formatDate from '../utils/formatDate';
 import API from '../utils/API';
-import Loader from './Loader';
 
 function App() {
   const [posts, setPosts] = useState('');
@@ -26,9 +26,6 @@ function App() {
   return (
     <div className="bg-white min-h-screen">
       <div className="w-11/12 max-w-screen-md mx-auto">
-        <div className="rounded bg-purple-100 w-full p-5 text-center text-purple-900 my-12">
-          This web app is NOT affiliated with whisper in any way
-        </div>
         <Navbar getPosts={getPosts} />
         {isLoading ? (
           <Loader />
