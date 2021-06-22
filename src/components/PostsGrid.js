@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import API from '../utils/API';
+import Post from './Post';
 
 function PostsGrid() {
   const [posts, setPosts] = useState('');
@@ -18,7 +19,7 @@ function PostsGrid() {
     <div className="post-grid">
       {posts &&
         posts.map((post) => {
-          return <img src={post.url}></img>;
+          return <Post post={post} />;
         })}
     </div>
   );
