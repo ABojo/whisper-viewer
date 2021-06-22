@@ -15,7 +15,7 @@ function PostsGrid() {
   }, []);
 
   return (
-    <div className="mx-auto w-11/12 max-w-screen-md post-grid">
+    <div className="post-grid">
       {posts &&
         posts.map((post) => {
           return <img src={post.url}></img>;

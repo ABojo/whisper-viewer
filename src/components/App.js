@@ -1,13 +1,12 @@
-import '../css/styles.css'
+import '../css/styles.css';
 import PostsGrid from './PostsGrid';
-import {Fragment} from 'react';
-
+import { Fragment } from 'react';
 
 function App() {
   return (
-    <Fragment>
+    <div className="w-11/12 max-w-screen-md mx-auto">
       <PostsGrid />
-    </Fragment>
+    </div>
   );
 }
 
