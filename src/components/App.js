@@ -1,9 +1,13 @@
 import '../css/styles.css'
+import PostsGrid from './PostsGrid';
+import {Fragment} from 'react';
+
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Fragment>
+      <PostsGrid />
+    </Fragment>
   );
 }
 
