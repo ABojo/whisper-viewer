@@ -1,18 +1,22 @@
 import '../css/styles.css';
 import PostsGrid from './PostsGrid';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import Navbar from './Navbar';
 import formatDate from '../utils/formatDate';
 import API from '../utils/API';
+import Loader from './Loader';
 
 function App() {
   const [posts, setPosts] = useState('');
   const [updateTime, setUpdateTime] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const getPosts = async () => {
+    setIsLoading(true);
     const json = await API.getLatest();
     setPosts(json.data.latestPosts);
     setUpdateTime(`Last updated at ${formatDate(new Date())}`);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -23,10 +27,16 @@ function App() {
     <div className="bg-white min-h-screen">
       <div className="w-11/12 max-w-screen-md mx-auto">
         <Navbar getPosts={getPosts} />
-        <p className="text-lg mb-6 text-gray-400 text-center">
-          {updateTime && updateTime}
-        </p>
-        <PostsGrid posts={posts} />
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <Fragment>
+            <p className="text-lg mb-6 text-gray-400 text-center">
+              {updateTime && updateTime}
+            </p>
+            <PostsGrid posts={posts} />
+          </Fragment>
+        )}
       </div>
     </div>
   );
