@@ -26,6 +26,9 @@ function App() {
   return (
     <div className="bg-white min-h-screen">
       <div className="w-11/12 max-w-screen-md mx-auto">
+        <div className="rounded bg-purple-100 w-full p-5 text-center text-purple-900 my-12">
+          This web app is NOT affiliated with whisper in any way
+        </div>
         <Navbar getPosts={getPosts} />
         {isLoading ? (
           <Loader />
