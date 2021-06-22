@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="w-11/12 max-w-screen-md mx-auto">
+      <div className="w-11/12 max-w-screen-lg mx-auto">
         <Navbar getPosts={getPosts} />
         {isLoading ? (
           <Loader />
