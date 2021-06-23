@@ -12,7 +12,7 @@ const formatMinutes = (minutes) => {
 };
 
 const formatTimeOfDay = (hours) => {
-  if (hours > 12) return 'PM';
+  if (hours >= 12) return 'PM';
 
   return 'AM';
 };
