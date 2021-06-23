@@ -5,7 +5,7 @@ function Post(props) {
     <div className="shadow">
       <div className="bg-purple-500 p-5 rounded-t">
         <p className="text-white font-bold mb-2">
-          <i class="fas fa-user mr-2"></i>
+          <i className="fas fa-user mr-2"></i>
           {post.nickname}
         </p>
         <p className="text-white text-sm">{post.location}</p>

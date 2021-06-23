@@ -7,7 +7,7 @@ function PostsGrid(props) {
     <div className="post-grid">
       {posts &&
         posts.map((post) => {
-          return <Post post={post} />;
+          return <Post post={post} key={post.wid} />;
         })}
     </div>
   );

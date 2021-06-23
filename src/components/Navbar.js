@@ -8,7 +8,7 @@ function Navbar(props) {
         onClick={getPosts}
         className="bg-purple-500 rounded p-2 hover:bg-purple-700 transition duration-200"
       >
-        <i class="fas fa-sync-alt text-white text-xl"></i>
+        <i className="fas fa-sync-alt text-white text-xl"></i>
       </button>
     </div>
   );
