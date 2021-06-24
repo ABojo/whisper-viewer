@@ -1,15 +1,13 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useState } from 'react';
 import API from '../utils/API';
-import PostDetail from './PostDetail';
+import PostDropdown from './PostDropdown';
 import Loader from './Loader';
-import formatDate from '../utils/formatDate';
-import formatAge from '../utils/formatAge';
 
 function Post(props) {
   const { post } = props;
 
   const [owner, setOwner] = useState(null);
-  const [extraShown, setExtraShown] = useState(false);
+  const [dropdownShown, setDropdownShown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   //pulls owners details from server
@@ -26,11 +24,11 @@ function Post(props) {
       setIsLoading(false);
     }
 
-    setExtraShown(true);
+    setDropdownShown(true);
   };
 
   const onClickClose = () => {
-    setExtraShown(false);
+    setDropdownShown(false);
   };
 
   return (
@@ -42,7 +40,7 @@ function Post(props) {
             {post.nickname}
           </p>
         </div>
-        {!extraShown && (
+        {!dropdownShown && (
           <button onClick={onClickOpen}>
             <i class="text-white text-lg fas fa-arrow-down"></i>
           </button>
@@ -51,29 +49,8 @@ function Post(props) {
 
       <div className="relative">
         <img src={post.url} alt={post.text} className="rounded-b mx-auto" />
-        {extraShown && (
-          <div className="bg-purple-500 p-5 pt-0 absolute top-0 left-0 w-full max-w-100 flex justify-between items-end">
-            <div>
-              <PostDetail name="Age" value={formatAge(owner.age)} />
-              <PostDetail name="Gender" value={owner.gender} />
-              <PostDetail name="Location" value={post.location} />
-              <PostDetail
-                name="Rating"
-                value={`${owner.rating.average.toFixed(2)} - ${
-                  owner.rating.total
-                } Chats`}
-              />
-              <PostDetail name="Replies" value={post.replies} />
-              <PostDetail name="Views" value={post.viewCount} />
-              <PostDetail
-                name="Timestamp"
-                value={formatDate(new Date(post.ts))}
-              />
-            </div>
-            <button onClick={onClickClose}>
-              <i className="text-white text-lg fas fa-arrow-up"></i>
-            </button>
-          </div>
+        {dropdownShown && (
+          <PostDropdown post={post} owner={owner} onClickClose={onClickClose} />
         )}
       </div>
       {isLoading && (
