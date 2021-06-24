@@ -17,9 +17,10 @@ const formatTimeOfDay = (hours) => {
   return 'AM';
 };
 
-const formatDate = (date) => {
-  const rawHours = date.getHours();
+const formatDate = (timeStamp) => {
+  const date = new Date(timeStamp);
 
+  const rawHours = date.getHours();
   const month = date.getMonth() + 1;
   const day = date.getDate();
   const hour = formatHour(rawHours);
