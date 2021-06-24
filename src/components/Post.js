@@ -12,7 +12,9 @@ function Post(props) {
 
   //pulls owners details from server
   const fetchOwner = async () => {
+    setIsLoading(true);
     const response = await API.getOwner(post.wid);
+    setIsLoading(false);
     setOwner(response.data.owner);
   };
 
@@ -21,11 +23,7 @@ function Post(props) {
   };
 
   const showDropdown = async () => {
-    if (!owner) {
-      setIsLoading(true);
-      await fetchOwner();
-      setIsLoading(false);
-    }
+    if (!owner) await fetchOwner();
 
     toggleDropdown();
   };
