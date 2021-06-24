@@ -2,6 +2,8 @@ import { useState, useEffect, Fragment } from 'react';
 import API from '../utils/API';
 import PostDetail from './PostDetail';
 import Loader from './Loader';
+import formatDate from '../utils/formatDate';
+import formatAge from '../utils/formatAge';
 
 function Post(props) {
   const { post } = props;
@@ -10,11 +12,13 @@ function Post(props) {
   const [extraShown, setExtraShown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  //pulls owners details from server
   const fetchOwner = async () => {
     const response = await API.getOwner(post.wid);
     setOwner(response.data.owner);
   };
 
+  //if the owner hasnt been pulled from the server grab it if not use the already stored state
   const onClickOpen = async () => {
     if (!owner) {
       setIsLoading(true);
@@ -50,18 +54,21 @@ function Post(props) {
         {extraShown && (
           <div className="bg-purple-500 p-5 pt-0 absolute top-0 left-0 w-full max-w-100 flex justify-between items-end">
             <div>
-              <PostDetail name="Age" value={owner && owner.age} />
-              <PostDetail name="Gender" value={owner && owner.gender} />
+              <PostDetail name="Age" value={formatAge(owner.age)} />
+              <PostDetail name="Gender" value={owner.gender} />
               <PostDetail name="Location" value={post.location} />
               <PostDetail
                 name="Rating"
-                value={
-                  owner &&
-                  `${owner.rating.average} - ${owner.rating.total} Chats`
-                }
+                value={`${owner.rating.average.toFixed(2)} - ${
+                  owner.rating.total
+                } Chats`}
               />
               <PostDetail name="Replies" value={post.replies} />
               <PostDetail name="Views" value={post.viewCount} />
+              <PostDetail
+                name="Timestamp"
+                value={formatDate(new Date(post.ts))}
+              />
             </div>
             <button onClick={onClickClose}>
               <i className="text-white text-lg fas fa-arrow-up"></i>
