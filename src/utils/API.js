@@ -1,7 +1,9 @@
 const API = (() => {
-  const getLatest = async () => {
+  const getLatest = async (scrollId) => {
     const response = await fetch(
-      'https://whisper-latest.herokuapp.com/api/posts'
+      `https://whisper-latest.herokuapp.com/api/posts${
+        scrollId ? `?scroll_id=${scrollId}` : ''
+      }`
     );
     const json = await response.json();
 
