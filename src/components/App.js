@@ -37,14 +37,14 @@ function App() {
     <div className="bg-white min-h-screen">
       <div className="w-11/12 max-w-screen-lg mx-auto">
         <Navbar getPosts={getLatestPosts} isLoading={isLoading} />
-        {isLoading ? (
+        {isLoading && !posts ? (
           <Loader classes="text-purple-500" />
         ) : (
           <Fragment>
             <p className="text-lg mb-6 text-gray-400 text-center">
               {updateTime && updateTime}
             </p>
-            <PostsGrid posts={posts} />
+            <PostsGrid getNextPosts={getNextPosts} posts={posts} />
           </Fragment>
         )}
       </div>
