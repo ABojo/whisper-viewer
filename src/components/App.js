@@ -28,7 +28,7 @@ function App() {
       <div className="w-11/12 max-w-screen-lg mx-auto">
         <Navbar getPosts={getPosts} isLoading={isLoading} />
         {isLoading ? (
-          <Loader />
+          <Loader classes="text-purple-500" />
         ) : (
           <Fragment>
             <p className="text-lg mb-6 text-gray-400 text-center">

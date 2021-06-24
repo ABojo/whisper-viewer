@@ -1,5 +1,6 @@
-function Loader() {
-  return <div className="loader text-purple-500"></div>;
+function Loader(props) {
+  const { classes } = props;
+  return <div className={`loader ${classes && classes}`}></div>;
 }
 
 export default Loader;
