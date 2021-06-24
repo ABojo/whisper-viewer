@@ -39,7 +39,7 @@ function Post(props) {
         </div>
         {!dropdownShown && (
           <button onClick={showDropdown}>
-            <i class="text-white text-lg fas fa-arrow-down"></i>
+            <i class="text-white text-lg fas fa-arrow-down hover:text-gray-200 duration-200 transition"></i>
           </button>
         )}
       </div>

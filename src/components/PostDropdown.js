@@ -22,7 +22,7 @@ function PostDropdown(props) {
         <PostDetail name="Timestamp" value={formatDate(new Date(post.ts))} />
       </div>
       <button onClick={toggleDropdown}>
-        <i className="text-white text-lg fas fa-arrow-up"></i>
+        <i className="text-white text-lg fas fa-arrow-up hover:text-gray-200 duration-200 transition"></i>
       </button>
     </div>
   );
