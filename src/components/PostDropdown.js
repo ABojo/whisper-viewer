@@ -1,6 +1,7 @@
 import PostDetail from './PostDetail';
 import formatDate from '../utils/formatDate';
 import formatAge from '../utils/formatAge';
+import capitalizeFirstLetter from '../utils/captilazeFirstLetter';
 
 function PostDropdown(props) {
   const { owner, post, toggleDropdown } = props;
@@ -9,7 +10,7 @@ function PostDropdown(props) {
     <div className="bg-purple-500 p-5 pt-0 absolute top-0 left-0 w-full max-w-100 flex justify-between items-end">
       <div>
         <PostDetail name="Age" value={formatAge(owner.age)} />
-        <PostDetail name="Gender" value={owner.gender} />
+        <PostDetail name="Gender" value={capitalizeFirstLetter(owner.gender)} />
         <PostDetail name="Location" value={post.location} />
         <PostDetail
           name="Rating"
