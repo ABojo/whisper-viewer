@@ -9,6 +9,7 @@ function PostsGrid(props) {
         posts.map((post) => {
           return <Post post={post} key={post.wid} />;
         })}
+      <div className="border-2 border-purple-500 rounded">Get More Posts</div>
     </div>
   );
 }

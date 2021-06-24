@@ -12,25 +12,21 @@ function App() {
   const [updateTime, setUpdateTime] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const toggleLoader = () => {
-    setIsLoading(!isLoading);
-  };
-
   const getLatestPosts = async () => {
-    toggleLoader();
+    setIsLoading(true);
     const json = await API.getLatest();
     setPosts(json.data.latestPosts);
     setScrollId(json.data.scrollId);
     setUpdateTime(`Last updated at ${formatDate(new Date())}`);
-    toggleLoader();
+    setIsLoading(false);
   };
 
   const getNextPosts = async () => {
-    toggleLoader();
+    setIsLoading(true);
     const json = await API.getLatest(scrollId);
     setPosts([...posts, ...json.data.latestPosts]);
     setScrollId(json.data.scrollId);
-    toggleLoader();
+    setIsLoading(false);
   };
 
   useEffect(() => {
