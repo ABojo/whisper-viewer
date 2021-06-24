@@ -3,7 +3,7 @@ import formatDate from '../utils/formatDate';
 import formatAge from '../utils/formatAge';
 
 function PostDropdown(props) {
-  const { owner, post, onClickClose } = props;
+  const { owner, post, toggleDropdown } = props;
 
   return (
     <div className="bg-purple-500 p-5 pt-0 absolute top-0 left-0 w-full max-w-100 flex justify-between items-end">
@@ -21,7 +21,7 @@ function PostDropdown(props) {
         <PostDetail name="Views" value={post.viewCount} />
         <PostDetail name="Timestamp" value={formatDate(new Date(post.ts))} />
       </div>
-      <button onClick={onClickClose}>
+      <button onClick={toggleDropdown}>
         <i className="text-white text-lg fas fa-arrow-up"></i>
       </button>
     </div>

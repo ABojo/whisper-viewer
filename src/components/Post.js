@@ -16,19 +16,18 @@ function Post(props) {
     setOwner(response.data.owner);
   };
 
-  //if the owner hasnt been pulled from the server grab it if not use the already stored state
-  const onClickOpen = async () => {
+  const toggleDropdown = () => {
+    setDropdownShown(!dropdownShown);
+  };
+
+  const showDropdown = async () => {
     if (!owner) {
       setIsLoading(true);
       await fetchOwner();
       setIsLoading(false);
     }
 
-    setDropdownShown(true);
-  };
-
-  const onClickClose = () => {
-    setDropdownShown(false);
+    toggleDropdown();
   };
 
   return (
@@ -41,7 +40,7 @@ function Post(props) {
           </p>
         </div>
         {!dropdownShown && (
-          <button onClick={onClickOpen}>
+          <button onClick={showDropdown}>
             <i class="text-white text-lg fas fa-arrow-down"></i>
           </button>
         )}
@@ -50,7 +49,11 @@ function Post(props) {
       <div className="relative">
         <img src={post.url} alt={post.text} className="rounded-b mx-auto" />
         {dropdownShown && (
-          <PostDropdown post={post} owner={owner} onClickClose={onClickClose} />
+          <PostDropdown
+            post={post}
+            owner={owner}
+            toggleDropdown={toggleDropdown}
+          />
         )}
       </div>
       {isLoading && (
