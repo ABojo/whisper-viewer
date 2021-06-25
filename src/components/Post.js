@@ -29,7 +29,7 @@ function Post(props) {
   };
 
   return (
-    <div className="shadow relative">
+    <div className="shadow relative fadeIn">
       <div className="bg-purple-500 p-5 rounded-t flex justify-between items-end">
         <div>
           <p className="text-white font-bold mb-2">
