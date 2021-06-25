@@ -19,7 +19,18 @@ const API = (() => {
     return json;
   };
 
-  return { getLatest, getOwner };
+  const searchPosts = async (searchTerm, scrollId) => {
+    const response = await fetch(
+      `https://whisper-latest.herokuapp.com/api/posts/search/${searchTerm}${
+        scrollId ? `?scroll_id=${scrollId}` : ''
+      }`
+    );
+    const json = await response.json();
+
+    return json;
+  };
+
+  return { getLatest, getOwner, searchPosts };
 })();
 
 export default API;

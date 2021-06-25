@@ -17,10 +17,12 @@ function App() {
 
   const getLatestPosts = async () => {
     setIsLoading(true);
+
     const json = await API.getLatest();
     setPosts(json.data.latestPosts);
     setScrollId(json.data.scrollId);
     setUpdateTime(`Last updated at ${formatDate(new Date())}`);
+
     setIsLoading(false);
   };
 
@@ -43,7 +45,6 @@ function App() {
         ) : (
           <Fragment>
             <SearchField setSearchValue={setSearchValue} />
-
             <p className="text-lg mb-6 text-gray-400 text-center">
               {updateTime && updateTime}
             </p>
