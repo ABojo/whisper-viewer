@@ -25,6 +25,12 @@ function App() {
     return await API.getLatest();
   };
 
+  const fetchNextPosts = async () => {
+    if (activeSearch) return await API.searchPosts(activeSearch, scrollId);
+
+    return await API.getLatest(scrollId);
+  };
+
   const getLatestPosts = async () => {
     setIsLoading(true);
     const json = await fetchPosts();
@@ -34,7 +40,7 @@ function App() {
   };
 
   const getNextPosts = async () => {
-    const json = await API.getLatest(scrollId);
+    const json = await fetchNextPosts();
     setPosts([...posts, ...json.data.latestPosts]);
     setScrollId(json.data.scrollId);
   };
