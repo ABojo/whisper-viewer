@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 import SearchBox from './SearchBox';
 import Loader from './Loader';
 import GetMorePosts from './GetMorePosts';
-import formatDate from '../utils/formatDate';
+import SearchStatus from './SearchStatus';
 import API from '../utils/API';
 
 function App() {
@@ -57,9 +57,7 @@ function App() {
           <Loader classes="text-purple-500" />
         ) : (
           <Fragment>
-            <p className="text-lg mb-6 text-gray-400 text-center">
-              {updateTime && updateTime}
-            </p>
+            <SearchStatus searchTerm={activeSearch} />
             <PostsGrid posts={posts} />
             <GetMorePosts getNextPosts={getNextPosts} />
           </Fragment>
