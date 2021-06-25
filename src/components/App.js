@@ -2,7 +2,7 @@ import '../css/styles.css';
 import { useState, useEffect, Fragment } from 'react';
 import PostsGrid from './PostsGrid';
 import Navbar from './Navbar';
-import SearchField from './SearchField';
+import SearchBox from './SearchBox';
 import Loader from './Loader';
 import GetMorePosts from './GetMorePosts';
 import formatDate from '../utils/formatDate';
@@ -52,7 +52,7 @@ function App() {
     <div className="bg-white min-h-screen">
       <div className="w-11/12 max-w-screen-lg mx-auto">
         <Navbar getPosts={getLatestPosts} isLoading={isLoading} />
-        <SearchField setSearchField={setSearchField} onSearch={handleSearch} />
+        <SearchBox setSearchField={setSearchField} onSearch={handleSearch} />
         {isLoading ? (
           <Loader classes="text-purple-500" />
         ) : (
