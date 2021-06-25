@@ -5,7 +5,7 @@ function Navbar(props) {
   const activeButton = 'bg-purple-500 hover:bg-purple-700';
   return (
     <div className="flex justify-between items-baseline py-12">
-      <h1 className="text-purple-500 text-2xl">Whisper's Latest</h1>
+      <h1 className="text-purple-500 text-2xl">Whisper Client</h1>
       <button
         disabled={isLoading}
         onClick={getPosts}

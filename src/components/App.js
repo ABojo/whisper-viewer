@@ -2,12 +2,14 @@ import '../css/styles.css';
 import { useState, useEffect, Fragment } from 'react';
 import PostsGrid from './PostsGrid';
 import Navbar from './Navbar';
+import SearchField from './SearchField';
 import Loader from './Loader';
 import GetMorePosts from './GetMorePosts';
 import formatDate from '../utils/formatDate';
 import API from '../utils/API';
 
 function App() {
+  const [searchValue, setSearchValue] = useState('');
   const [scrollId, setScrollId] = useState('');
   const [posts, setPosts] = useState('');
   const [updateTime, setUpdateTime] = useState('');
@@ -40,6 +42,8 @@ function App() {
           <Loader classes="text-purple-500" />
         ) : (
           <Fragment>
+            <SearchField setSearchValue={setSearchValue} />
+
             <p className="text-lg mb-6 text-gray-400 text-center">
               {updateTime && updateTime}
             </p>
