@@ -1,10 +1,25 @@
+import Loader from './Loader';
+import { useState } from 'react';
 function GetMorePosts(props) {
+  const [isLoading, setIsLoading] = useState(false);
+  const active = 'bg-purple-100 hover:bg-purple-200 text-purple-900';
+  const disabled = 'bg-gray-200 text-white';
+
+  const onClickGet = async () => {
+    setIsLoading(true);
+    await props.getNextPosts();
+    setIsLoading(false);
+  };
+
   return (
     <button
-      onClick={props.getNextPosts}
-      className="bg-purple-100 w-full hover:bg-purple-200 rounded flex justify-center items-center transition duration-200 font-bold text-2xl text-purple-900 p-5 mb-12"
+      disabled={isLoading}
+      onClick={onClickGet}
+      className={`${
+        isLoading ? disabled : active
+      } w-full rounded flex justify-center items-center transition duration-200 font-bold text-2xl p-5 mb-12`}
     >
-      Get More Posts
+      {isLoading ? 'Getting posts...' : 'Get More Posts'}
     </button>
   );
 }
