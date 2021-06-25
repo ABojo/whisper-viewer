@@ -17,7 +17,6 @@ function App() {
 
   const [scrollId, setScrollId] = useState('');
   const [posts, setPosts] = useState('');
-  const [updateTime, setUpdateTime] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchPosts = async () => {
@@ -40,10 +39,6 @@ function App() {
     setScrollId(json.data.scrollId);
   };
 
-  const handleSearch = async () => {
-    setActiveSearch(searchField);
-  };
-
   useEffect(() => {
     getLatestPosts();
   }, [activeSearch]);
@@ -52,7 +47,10 @@ function App() {
     <div className="bg-white min-h-screen">
       <div className="w-11/12 max-w-screen-lg mx-auto">
         <Navbar getPosts={getLatestPosts} isLoading={isLoading} />
-        <SearchBox setSearchField={setSearchField} onSearch={handleSearch} />
+        <SearchBox
+          setSearchField={setSearchField}
+          onSearch={() => setActiveSearch(searchField)}
+        />
         {isLoading ? (
           <Loader classes="text-purple-500" />
         ) : (
