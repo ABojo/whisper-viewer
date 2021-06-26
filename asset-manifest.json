@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/whispers-latest-client/static/css/main.e59043f3.chunk.css",
-    "main.js": "/whispers-latest-client/static/js/main.cdb21636.chunk.js",
-    "main.js.map": "/whispers-latest-client/static/js/main.cdb21636.chunk.js.map",
+    "main.css": "/whispers-latest-client/static/css/main.fd21b9f7.chunk.css",
+    "main.js": "/whispers-latest-client/static/js/main.4e502037.chunk.js",
+    "main.js.map": "/whispers-latest-client/static/js/main.4e502037.chunk.js.map",
     "runtime-main.js": "/whispers-latest-client/static/js/runtime-main.1d7e3d6e.js",
     "runtime-main.js.map": "/whispers-latest-client/static/js/runtime-main.1d7e3d6e.js.map",
     "static/js/2.7b64838e.chunk.js": "/whispers-latest-client/static/js/2.7b64838e.chunk.js",
     "static/js/2.7b64838e.chunk.js.map": "/whispers-latest-client/static/js/2.7b64838e.chunk.js.map",
     "index.html": "/whispers-latest-client/index.html",
-    "static/css/main.e59043f3.chunk.css.map": "/whispers-latest-client/static/css/main.e59043f3.chunk.css.map",
+    "static/css/main.fd21b9f7.chunk.css.map": "/whispers-latest-client/static/css/main.fd21b9f7.chunk.css.map",
     "static/js/2.7b64838e.chunk.js.LICENSE.txt": "/whispers-latest-client/static/js/2.7b64838e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1d7e3d6e.js",
     "static/js/2.7b64838e.chunk.js",
-    "static/css/main.e59043f3.chunk.css",
-    "static/js/main.cdb21636.chunk.js"
+    "static/css/main.fd21b9f7.chunk.css",
+    "static/js/main.4e502037.chunk.js"
   ]
 }
