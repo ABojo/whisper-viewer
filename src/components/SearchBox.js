@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 function SearchField(props) {
   const { setSearchField, onSearch, searchField } = props;
 
@@ -14,6 +12,9 @@ function SearchField(props) {
       </h3>
       <div className="w-full  relative border border-gray-100 rounded">
         <input
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') onSearch();
+          }}
           onChange={(e) => setSearchField(e.currentTarget.value)}
           placeholder="Search by keyword"
           className="p-3 pr-24 bg-purple-100 rounded  block w-full "
