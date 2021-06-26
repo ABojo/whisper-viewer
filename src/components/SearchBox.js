@@ -1,5 +1,8 @@
 function SearchField(props) {
-  const { setSearchField, onSearch, searchField } = props;
+  const { setSearchField, onSearch, searchField, isLoading } = props;
+
+  const active = 'bg-white text-purple-500 hover:bg-gray-200';
+  const inactive = 'bg-gray-200 text-white';
 
   return (
     <div className="w-full max-w-sm mx-auto mb-12">
@@ -20,8 +23,11 @@ function SearchField(props) {
           className="p-3 pr-24 bg-purple-100 rounded  block w-full "
         />
         <button
+          disabled={isLoading}
           onClick={onSearch}
-          className="bg-white p-3 text-purple-500 absolute rounded-r top-0 right-0 font-bold hover:bg-gray-200 transition duration-200"
+          className={`${
+            isLoading ? inactive : active
+          } bg-white p-3 absolute rounded-r top-0 right-0 font-bold transition duration-200`}
         >
           Search
         </button>

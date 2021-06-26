@@ -54,6 +54,7 @@ function App() {
       <div className="w-11/12 max-w-screen-lg mx-auto">
         <Navbar getPosts={getLatestPosts} isLoading={isLoading} />
         <SearchBox
+          isLoading={isLoading}
           searchField={searchField}
           setSearchField={setSearchField}
           onSearch={() => setActiveSearch(searchField)}
