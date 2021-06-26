@@ -6,6 +6,7 @@ import SearchBox from './SearchBox';
 import Loader from './Loader';
 import GetMorePosts from './GetMorePosts';
 import SearchStatus from './SearchStatus';
+import ErrorMessage from './ErrorMessage';
 import API from '../utils/API';
 
 function App() {
@@ -63,9 +64,15 @@ function App() {
           <Loader classes="text-purple-500" />
         ) : (
           <Fragment>
-            <SearchStatus searchTerm={activeSearch} />
-            <PostsGrid posts={posts} />
-            <GetMorePosts getNextPosts={getNextPosts} />
+            {posts.length > 0 ? (
+              <Fragment>
+                <SearchStatus searchTerm={activeSearch} />
+                <PostsGrid posts={posts} />
+                <GetMorePosts getNextPosts={getNextPosts} />
+              </Fragment>
+            ) : (
+              <ErrorMessage message="Sorry, we couldn't find any posts with that keyword!" />
+            )}
           </Fragment>
         )}
       </div>
