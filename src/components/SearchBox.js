@@ -1,8 +1,8 @@
 function SearchField(props) {
   const { setSearchField, onSearch, searchField, isLoading } = props;
 
-  const active = 'bg-white text-purple-500 hover:bg-gray-200';
-  const inactive = 'bg-gray-200 text-white';
+  const active = 'bg-purple-500 text-white hover:bg-purple-300';
+  const inactive = 'bg-purple-300 text-white';
 
   return (
     <div className="w-full max-w-sm mx-auto mb-12">
