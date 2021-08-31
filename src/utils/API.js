@@ -1,9 +1,9 @@
 const API = (() => {
+  const apiPath = 'https://whisper-latest.herokuapp.com/api';
+
   const getLatest = async (scrollId) => {
     const response = await fetch(
-      `https://whisper-latest.herokuapp.com/api/posts${
-        scrollId ? `?scroll_id=${scrollId}` : ''
-      }`
+      `${apiPath}/posts${scrollId ? `?scroll_id=${scrollId}` : ''}`
     );
     const json = await response.json();
 
@@ -11,9 +11,7 @@ const API = (() => {
   };
 
   const getOwner = async (wid) => {
-    const response = await fetch(
-      `https://whisper-latest.herokuapp.com/api/posts/${wid}`
-    );
+    const response = await fetch(`${apiPath}/posts/${wid}`);
     const json = await response.json();
 
     return json;
@@ -21,7 +19,7 @@ const API = (() => {
 
   const searchPosts = async (searchTerm, scrollId) => {
     const response = await fetch(
-      `https://whisper-latest.herokuapp.com/api/posts/search/${searchTerm}${
+      `${apiPath}/posts/search/${searchTerm}${
         scrollId ? `?scroll_id=${scrollId}` : ''
       }`
     );
@@ -30,7 +28,14 @@ const API = (() => {
     return json;
   };
 
-  return { getLatest, getOwner, searchPosts };
+  const deletePost = async (wid) => {
+    const response = await fetch(`${apiPath}/posts/${wid}/flag`);
+    const json = await response.json();
+
+    return json;
+  };
+
+  return { getLatest, getOwner, searchPosts, deletePost };
 })();
 
 export default API;
