@@ -4,7 +4,7 @@ import PostDropdown from './PostDropdown';
 import Loader from './Loader';
 
 function Post(props) {
-  const { post } = props;
+  const { post, setDeleteWid } = props;
 
   const [owner, setOwner] = useState(null);
   const [dropdownShown, setDropdownShown] = useState(false);
@@ -28,6 +28,10 @@ function Post(props) {
     toggleDropdown();
   };
 
+  const showDeleteBox = () => {
+    setDeleteWid(post.wid);
+  };
+
   return (
     <div className="shadow relative fadeIn">
       <div className="bg-purple-500 p-5 rounded-t flex justify-between items-end">
@@ -45,7 +49,13 @@ function Post(props) {
       </div>
 
       <div className="relative">
-        <img src={post.url} alt={post.text} className="rounded-b mx-auto" />
+        <img src={post.url} alt={post.text} className="mx-auto" />
+        <button
+          onClick={showDeleteBox}
+          className="absolute bottom-2 right-2 bg-red-200 p-3 rounded text-red-900 font-bold hover:bg-red-300 transition duration-200"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
         {dropdownShown && (
           <PostDropdown
             post={post}
